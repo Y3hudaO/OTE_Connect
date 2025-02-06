@@ -1,6 +1,4 @@
 /* ====== הגדרות פונטים ====== */
-
-/* הגדרת פונט מותאם אישית */
 @font-face {
     font-display: swap;
     font-family: 'FB open heb';
@@ -9,43 +7,54 @@
     src: url('...');
 }
 
-/* ייבוא פונט Roboto */
-@import url('...');
+@import url('...');  /* ייבוא Roboto */
 
 /* ====== משתני CSS גלובליים ====== */
 :root {
     --green: #3DD598;
     --black: #252525;
     --grey: #464646;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
 }
 
 /* ====== סגנונות בסיסיים ====== */
-
-/* הגדרות טקסט בסיסיות */
 h1, h2, h3, span, p, div {
     background: white;
-    color: black;
+    color: var(--black);
 }
 
-/* עיצוב מיכל התוכן הראשי */
+/* ====== מיכל ראשי ====== */
 div#entity-container {
-    border-radius: 20px !important;
-    overflow: hidden;
-    background: white;
-    padding: 5px 15px;
-    font-family: 'FB open heb';
-}
-
-div#entity-container div {
-    background: transparent;
-    color: black;
-    font-size: 16px;
-    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 1200px;
     margin: 0 auto;
-    margin-bottom: 10px;  /* מרווח קטן יותר בין האלמנטים */
+    padding: var(--spacing-md);
+    border-radius: 20px;
+    background: white;
+    font-family: 'FB open heb';
+    overflow: hidden;
 }
 
-/* ====== עיצוב טפסים ====== */
+/* ====== קבוצות שדות ====== */
+.field_group_body {
+    display: grid;
+    /* יוצר גריד גמיש שמתאים את עצמו למסך */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+/* עיצוב מיכל השדה */
+.form_data_element_wrap {
+    width: 100% !important;
+    min-width: 200px;
+    max-width: 300px;
+    margin-bottom: var(--spacing-sm);
+}
 
 /* הסתרת אלמנט אחרון בטופס */
 form#form-entity > div:last-child {
@@ -53,51 +62,66 @@ form#form-entity > div:last-child {
 }
 
 /* הסרת מסגרת מקבוצות שדות אי-זוגיות */
-div#entity-container .field_group.ng-scope.field_group_odd {
+.field_group.ng-scope.field_group_odd {
     border: none;
 }
 
-/* עיצוב שדות קלט */
+/* ====== עיצוב שדות קלט ====== */
 ul.select2-choices, 
 input, 
 a.select2-choice, 
 .textarea_field textarea {
-    border-radius: 8px !important;
+    width: 100%;
+    border-radius: var(--spacing-sm) !important;
     background: white !important;
-    color: black !important;
+    color: var(--black) !important;
     text-align: right !important;
-    padding: 10px;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--grey);
 }
 
-/* מצב פוקוס בשדות */
+/* מצב פוקוס */
 ul.select2-choices:focus, 
 input:not(.select2-input):focus, 
 a.select2-choice:focus, 
 .textarea_field textarea:focus {
     outline: 1px solid var(--green) !important;
+    border-color: var(--green);
 }
 
 /* ====== עיצוב תיבת בחירה מרובה ====== */
+.select2-container {
+    width: 100% !important;
+}
 
-/* אפשרויות נבחרות */
+.select2-container-multi .select2-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    min-height: 38px;
+}
+
 .select2-container-multi .select2-choices .select2-search-choice {
     background: var(--green);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 0;
 }
 
 /* תפריט נפתח */
 .select2-drop {
-    border-radius: 8px;
+    border-radius: var(--spacing-sm);
     max-width: 300px;
-    max-height: 150px;
+    max-height: 200px;
     overflow-y: auto;
-    overflow-x: hidden;
-    width: 100% !important;     /* תמיד ישתמש ברוחב המקסימלי המותר */
-    position: absolute;         /* מיקום מוחלט */
-    z-index: 1000;             /* שכבה גבוהה כדי להופיע מעל אלמנטים אחרים */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* צל עדין לתחושת ריחוף */
+    width: 100% !important;
+    position: absolute;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid var(--grey);
 }
 
-/* אפשרויות בתפריט */
 .select2-drop ul li.select2-highlighted {
     background: var(--green);
 }
@@ -106,66 +130,68 @@ a.select2-choice:focus,
     background: white;
 }
 
-/* ====== עיצוב כפתורים ====== */
-
+/* ====== כפתורים ====== */
 .create_entity_buttons {
     display: flex;
     justify-content: center;
-    margin-top: 50px;    /* הגדלת הרווח מ-30px ל-50px */
-    position: relative;   /* מיקום יחסי */
-    z-index: 1;          /* שכבה נמוכה יותר מהדרופדאון */    /* רווח גדול יותר מהתוכן שמעל */
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
 }
 
 .create_entity_buttons button.btn {
-    border-radius: 8px;
+    border-radius: var(--spacing-sm);
     background-color: var(--green);
     color: var(--black);
     font-size: 16px;
     font-weight: 600;
-    padding: 15px 30px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
-/* ====== עיצוב טולטיפים ====== */
+.create_entity_buttons button.btn:hover {
+    opacity: 0.9;
+}
 
+/* ====== טולטיפים ====== */
 .entity .field_group div.modal_tooltip.ng-scope {
-    top: 0;
-    left: 0;
-    padding: 5px;
-}
-
-.entity .field_group div.modal_tooltip.ng-scope span {
-    margin: 0 !important;
+    position: relative;
+    padding: var(--spacing-sm);
 }
 
 .entity .field_group div.modal_tooltip.ng-scope .popover {
     background: white !important;
-    border-color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: var(--spacing-sm);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* ====== התאמה למסכים שונים ====== */
-
-/* מסך קטן */
-@media (max-width: 979px) {
-    .entity .field_group_body .form_data_element_wrap {
-        width: 45% !important;
+@media (max-width: 768px) {
+    .field_group_body {
+        grid-template-columns: 1fr;
     }
     
-    .select2-container-multi .select2-choices {
+    .form_data_element_wrap {
         max-width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
+    }
+    
+    .select2-drop {
+        max-width: 100%;
     }
 }
 
-/* מסך גדול */
-@media (min-width: 980px) {
-    .entity .field_group_body .form_data_element_wrap {
-        width: 45% !important;
+@media (min-width: 769px) and (max-width: 1024px) {
+    .field_group_body {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .select2-container-multi .select2-choices {
-        max-width: 300px;
-        display: inline-flex;
-        flex-wrap: nowrap;
+}
+
+@media (min-width: 1025px) {
+    .field_group_body {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
