@@ -1,4 +1,5 @@
 /* ====== הגדרות פונטים ====== */
+/* מגדיר את הפונט העברי המותאם אישית */
 @font-face {
     font-display: swap;
     font-family: 'FB open heb';
@@ -7,9 +8,11 @@
     src: url('...');
 }
 
-@import url('...');  /* ייבוא Roboto */
+/* ייבוא פונט Roboto למקרה שנדרש טקסט בלועזית */
+@import url('...');
 
 /* ====== משתני CSS גלובליים ====== */
+/* הגדרת צבעים ומרווחים שחוזרים על עצמם לשימוש עקבי בכל הטופס */
 :root {
     --green: #3DD598;
     --black: #252525;
@@ -20,16 +23,16 @@
 }
 
 /* ====== סגנונות בסיסיים ====== */
+/* הגדרות ברירת מחדל לטקסט */
 h1, h2, h3, span, p, div {
     background: white;
     color: var(--black);
 }
 
 /* ====== מיכל ראשי ====== */
+/* עיצוב הקונטיינר הראשי של הטופס */
 div#entity-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--spacing-md);
@@ -40,33 +43,33 @@ div#entity-container {
 }
 
 /* ====== קבוצות שדות ====== */
+/* מסדר את השדות בטופס זה לצד זה */
 .field_group_body {
-    display: grid;
-    /* יוצר גריד גמיש שמתאים את עצמו למסך */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-md);
     width: 100%;
 }
 
-/* עיצוב מיכל השדה */
+/* מגדיר את הרוחב של כל שדה בטופס */
 .form_data_element_wrap {
-    width: 100% !important;
-    min-width: 200px;
-    max-width: 300px;
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
     margin-bottom: var(--spacing-sm);
 }
 
-/* הסתרת אלמנט אחרון בטופס */
+/* מסתיר את האלמנט האחרון בטופס */
 form#form-entity > div:last-child {
     display: none;
 }
 
-/* הסרת מסגרת מקבוצות שדות אי-זוגיות */
+/* מסיר מסגרת מקבוצות שדות אי-זוגיות */
 .field_group.ng-scope.field_group_odd {
     border: none;
 }
 
 /* ====== עיצוב שדות קלט ====== */
+/* עיצוב אחיד לכל סוגי הקלט בטופס */
 ul.select2-choices, 
 input, 
 a.select2-choice, 
@@ -80,7 +83,7 @@ a.select2-choice,
     border: 1px solid var(--grey);
 }
 
-/* מצב פוקוס */
+/* עיצוב מצב פוקוס בשדות */
 ul.select2-choices:focus, 
 input:not(.select2-input):focus, 
 a.select2-choice:focus, 
@@ -90,10 +93,12 @@ a.select2-choice:focus,
 }
 
 /* ====== עיצוב תיבת בחירה מרובה ====== */
+/* מגדיר את הרוחב של תיבת הבחירה */
 .select2-container {
     width: 100% !important;
 }
 
+/* מסדר את האפשרויות הנבחרות בתיבת הבחירה */
 .select2-container-multi .select2-choices {
     display: flex;
     flex-wrap: wrap;
@@ -102,6 +107,7 @@ a.select2-choice:focus,
     min-height: 38px;
 }
 
+/* עיצוב האפשרויות שנבחרו */
 .select2-container-multi .select2-choices .select2-search-choice {
     background: var(--green);
     border-radius: 4px;
@@ -109,7 +115,7 @@ a.select2-choice:focus,
     margin: 0;
 }
 
-/* תפריט נפתח */
+/* עיצוב התפריט הנפתח */
 .select2-drop {
     border-radius: var(--spacing-sm);
     max-width: 300px;
@@ -122,15 +128,18 @@ a.select2-choice:focus,
     border: 1px solid var(--grey);
 }
 
+/* עיצוב אפשרות מסומנת בתפריט */
 .select2-drop ul li.select2-highlighted {
     background: var(--green);
 }
 
+/* עיצוב אפשרויות רגילות בתפריט */
 .select2-drop ul li:not(.select2-highlighted) {
     background: white;
 }
 
 /* ====== כפתורים ====== */
+/* מיקום ועיצוב אזור הכפתורים */
 .create_entity_buttons {
     display: flex;
     justify-content: center;
@@ -140,6 +149,7 @@ a.select2-choice:focus,
     z-index: 1;
 }
 
+/* עיצוב הכפתורים עצמם */
 .create_entity_buttons button.btn {
     border-radius: var(--spacing-sm);
     background-color: var(--green);
@@ -152,16 +162,19 @@ a.select2-choice:focus,
     transition: opacity 0.2s ease;
 }
 
+/* אפקט hover על כפתורים */
 .create_entity_buttons button.btn:hover {
     opacity: 0.9;
 }
 
 /* ====== טולטיפים ====== */
+/* מיקום הטולטיפ */
 .entity .field_group div.modal_tooltip.ng-scope {
     position: relative;
     padding: var(--spacing-sm);
 }
 
+/* עיצוב חלון הטולטיפ */
 .entity .field_group div.modal_tooltip.ng-scope .popover {
     background: white !important;
     border: 1px solid var(--green);
@@ -170,12 +183,10 @@ a.select2-choice:focus,
 }
 
 /* ====== התאמה למסכים שונים ====== */
+/* מסכים קטנים (עד 768px) */
 @media (max-width: 768px) {
-    .field_group_body {
-        grid-template-columns: 1fr;
-    }
-    
     .form_data_element_wrap {
+        flex: 0 0 100%;
         max-width: 100%;
     }
     
@@ -184,14 +195,18 @@ a.select2-choice:focus,
     }
 }
 
+/* מסכים בינוניים (769px עד 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .field_group_body {
-        grid-template-columns: repeat(2, 1fr);
+    .form_data_element_wrap {
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
     }
 }
 
+/* מסכים גדולים (מעל 1024px) */
 @media (min-width: 1025px) {
-    .field_group_body {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .form_data_element_wrap {
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
     }
 }
