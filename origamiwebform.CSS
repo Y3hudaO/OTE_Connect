@@ -1,171 +1,146 @@
-/* ====== הגדרות פונטים ====== */
-
-/* הגדרת פונט מותאם אישית */
 @font-face {
-    font-display: swap;
-    font-family: 'FB open heb';
-    font-style: normal;
-    font-weight: 400;
-    src: url('...');
+  font-display: swap;
+  font-family: 'FB open heb';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://academy.roy-ribak.co.il/wp-content/uploads/2022/06/fbcoherentisansen-regularwebfont.ttf');
 }
 
-/* ייבוא פונט Roboto */
-@import url('...');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-/* ====== משתני CSS גלובליים ====== */
 :root {
-    --green: #3DD598;
-    --black: #252525;
-    --grey: #464646;
+  --green: #3DD598;
+  --black: #252525;
+  --grey: #464646;
 }
 
-/* ====== סגנונות בסיסיים ====== */
+form#form-entity > div:last-child {
+  display: none;
+}
 
-/* הגדרות טקסט בסיסיות */
 h1, h2, h3, span, p, div {
-    background: white;
-    color: black;
-}
-
-/* עיצוב מיכל התוכן הראשי */
-div#entity-container {
-    border-radius: 20px !important;
-    overflow: hidden;
-    background: white;
-    padding: 5px 15px;
-    font-family: 'FB open heb';
+  background: white;
+  color: black;
 }
 
 div#entity-container div {
-    background: transparent;
-    color: black;
-    font-size: 16px;
-    max-width: 1400px;
-    margin: 0 auto;
-    margin-bottom: 10px;  /* מרווח קטן יותר בין האלמנטים */
+  background: transparent;
+  color: black;
+  font-size: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ====== עיצוב טפסים ====== */
-
-/* הסתרת אלמנט אחרון בטופס */
-form#form-entity > div:last-child {
-    display: none;
-}
-
-/* הסרת מסגרת מקבוצות שדות אי-זוגיות */
 div#entity-container .field_group.ng-scope.field_group_odd {
-    border: none;
+  border: none;
 }
 
-/* עיצוב שדות קלט */
-ul.select2-choices, 
-input, 
-a.select2-choice, 
-.textarea_field textarea {
-    border-radius: 8px !important;
-    background: white !important;
-    color: black !important;
-    text-align: right !important;
-    padding: 10px;
+div#entity-container {
+  border-radius: 20px !important;
+  overflow: hidden;
+  background: white;
+  padding: 20px 15px;
+  font-family: 'FB open heb';
 }
 
-/* מצב פוקוס בשדות */
-ul.select2-choices:focus, 
-input:not(.select2-input):focus, 
-a.select2-choice:focus, 
-.textarea_field textarea:focus {
-    outline: 1px solid var(--green) !important;
-}
-
-/* ====== עיצוב תיבת בחירה מרובה ====== */
-
-/* אפשרויות נבחרות */
 .select2-container-multi .select2-choices .select2-search-choice {
-    background: var(--green);
+  background: var(--green);
 }
 
-/* תפריט נפתח */
 .select2-drop {
-    border-radius: 8px;
-    max-width: 300px;
-    max-height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 100% !important;     /* תמיד ישתמש ברוחב המקסימלי המותר */
-    position: absolute;         /* מיקום מוחלט */
-    z-index: 1000;             /* שכבה גבוהה כדי להופיע מעל אלמנטים אחרים */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* צל עדין לתחושת ריחוף */
+  border-radius: 8px;
+  max-width: 300px;
 }
 
-/* אפשרויות בתפריט */
 .select2-drop ul li.select2-highlighted {
-    background: var(--green);
+  background: var(--green);
 }
 
 .select2-drop ul li:not(.select2-highlighted) {
-    background: white;
+  background: white;
 }
 
-/* ====== עיצוב כפתורים ====== */
+ul.select2-choices, input, a.select2-choice, .textarea_field textarea {
+  border-radius: 8px !important;
+  background: white !important;
+  color: black !important;
+  text-align: right !important;
+  padding: 10px;
+}
+
+.content-box {
+  line-height: 1.3;
+}
+
+ul.select2-choices:focus, input:not(.select2-input):focus, a.select2-choice:focus, .textarea_field textarea:focus {
+  outline: 1px solid var(--green) !important;
+}
+
+div.field_name_wrapper div.field_name {
+  color: black;
+  width: calc(100% - 20px);
+}
+
+div.select2-result-label {
+  color: black;
+}
+
+.select2-search, .select2-search input.select2-input {
+  padding: 0;
+  margin: 0;
+}
 
 .create_entity_buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;    /* הגדלת הרווח מ-30px ל-50px */
-    position: relative;   /* מיקום יחסי */
-    z-index: 1;          /* שכבה נמוכה יותר מהדרופדאון */    /* רווח גדול יותר מהתוכן שמעל */
+  display: flex;
+  justify-content: center;
 }
 
 .create_entity_buttons button.btn {
-    border-radius: 8px;
-    background-color: var(--green);
-    color: var(--black);
-    font-size: 16px;
-    font-weight: 600;
-    padding: 15px 30px;
+  border-radius: 8px;
+  background-color: var(--green);
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 30px;
 }
 
-/* ====== עיצוב טולטיפים ====== */
-
 .entity .field_group div.modal_tooltip.ng-scope {
-    top: 0;
-    left: 0;
-    padding: 5px;
+  top: 0;
+  left: 0;
+  padding: 5px;
 }
 
 .entity .field_group div.modal_tooltip.ng-scope span {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .entity .field_group div.modal_tooltip.ng-scope .popover {
-    background: white !important;
-    border-color: var(--green);
+  background: white !important;
+  border-color: var(--green);
 }
 
-/* ====== התאמה למסכים שונים ====== */
+.entity input, .select2-container-multi ul.select2-choices {
+  border-color: #ffffff44;
+}
 
-/* מסך קטן */
 @media (max-width: 979px) {
-    .entity .field_group_body .form_data_element_wrap {
-        width: 45% !important;
-    }
-    
-    .select2-container-multi .select2-choices {
-        max-width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-    }
+  .entity .field_group_body .form_data_element_wrap {
+    width: 45% !important;
+  }
+  .select2-container-multi .select2-choices {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
 }
 
-/* מסך גדול */
 @media (min-width: 980px) {
-    .entity .field_group_body .form_data_element_wrap {
-        width: 45% !important;
-    }
-    
-    .select2-container-multi .select2-choices {
-        max-width: 300px;
-        display: inline-flex;
-        flex-wrap: nowrap;
-    }
+  .entity .field_group_body .form_data_element_wrap {
+    width: 45% !important;
+  }
+  .select2-container-multi .select2-choices {
+    max-width: 300px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
 }
